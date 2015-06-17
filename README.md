@@ -7,6 +7,10 @@ This repository is for ongoing projects involving analysis of breweries and othe
 * [Breweries NAICS 312120](http://www.census.gov/econ/isp/sampler.php?naicscode=312120&naicslevel=6) listing of relevant employment indicators from the U.S. Census.
 * [USGS Water Quality Data](http://water.usgs.gov/owq/data.html) for in-depth look at a key input to the beer making process.
 
+## North Carolina Brew
+
+[STATE OF GROWTH: THE RISE OF NORTH CAROLINA BEER](http://allaboutbeer.com/state-of-growth-the-rise-of-north-carolina-beer/)
+
 ## Packages Needed
 Various packages used are not found on CRAN, therefore the [devtools package](http://cran.r-project.org/web/packages/devtools/index.html) needs to be installed.
 
