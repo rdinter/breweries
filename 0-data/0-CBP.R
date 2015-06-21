@@ -9,90 +9,57 @@ print(paste0("Started 0-CBP at ", Sys.time()))
 options(scipen=999) #Turn off scientific notation for write.csv()
 require(dplyr, quietly = T)
 require(readr, quietly = T)
+source("0-functions.R")
 
 # Create a directory for the data
 localDir <- "0-data/CBP"
 data_source <- paste0(localDir, "/Raw")
 if (!file.exists(localDir)) dir.create(localDir)
 if (!file.exists(data_source)) dir.create(data_source)
-# data_source <- paste0(localDir, "/cbpR_data_source")
-# data_final <- paste0(localDir, "/cbpR_data_final")
-# if (!file.exists(data_final)) dir.create(data_final)
-
-# http://www.census.gov/econ/isp/sampler.php?naicscode=312120&naicslevel=6
-# Breweries NAICS Code is 312120
-
-# NAICS 312120 Breweries; SIC 2082 Malt Beverages (except malt extract)
-# NAICS 445310 Beer, Wine, and Liquor Stores; SIC 5181 Beer and Ale
-#  (beer and ale sold via retail method)
-
 
 tempDir  <- tempdir()
-# unlink(tempDir, recursive = T)
-url  <- paste0("https://www.census.gov/econ/cbp/",
-               "download/full_layout/County_Layout.txt")
-file <- paste(localDir, basename(url), sep = "/")
-if (!file.exists(file)) download.file(url, file, method = "libcurl")
 
-url  <- paste0("https://www.census.gov/econ/cbp/",
-               "download/full_layout/County_Layout_SIC.txt")
-file <- paste(localDir, basename(url), sep = "/")
-if (!file.exists(file)) download.file(url, file, method = "libcurl")
+# Get layout files for data
+urls <- paste0("https://www.census.gov/econ/cbp/download/full_layout/",
+               c("County_Layout.txt", "County_Layout_SIC.txt"))
+lapply(urls, function(x) bdown(url = x, folder = localDir))
+
+urls <- paste0("https://www.census.gov/econ/cbp/download/",
+               c("sic86.txt", "sic87.txt", "sic88_97.txt", "naics.txt"))
+lapply(urls, function(x) bdown(url = x, folder = localDir))
 
 
 ##### CBP Data from 1986 to 2001
 years  <- c(as.character(86:99), "00", "01")
 url    <- "ftp://ftp.census.gov/Econ2001_And_Earlier/CBP_CSV/"
-files  <- matrix(NA, nrow = length(years))
-row.names(files) <- years
-for (i in years){
-  temp <- paste0(url, "cbp", i, "co.zip")
-  file <- paste(data_source, basename(temp), sep = "/")
-  files[i,] <- file
-  if (!file.exists(file)) download.file(temp, file, method = "libcurl")
-}
+urls   <- paste0(url, "cbp", years, "co.zip")
+lapply(urls, function(x) bdown(url = x, folder = data_source))
 
-data <- data.frame()
-year <- 1986
-for (j in files){
-  unzip(j, exdir = tempDir)
-  file       <- list.files(tempDir, pattern = "\\.txt$", full.names = T)
-  rdata      <- read_csv(file)
-  rdata$year <- year
-  
-  data  <- bind_rows(data, rdata)
-  year  <- year + 1
-  unlink(tempDir, recursive = T)
-  
-}
-write_csv(data, path = "0-data/CBP/CBP86-01.csv")
-save(data, file = "0-data/CBP/CBP86-01.RData")
+files  <- paste(data_source, basename(urls), sep = "/")
+year   <- 1986:2001
+cbp8601<- mapply(function(x, y) zipdata(x, tempDir, y), x = files,
+                 y = year, SIMPLIFY = F, USE.NAMES = T)
+
+cbp8601<- bind_rows(cbp8601)
+write_csv(cbp8601, path = paste0(localDir, "/CBP86-01.csv"))
+save(cbp8601, file = paste0(localDir, "/CBP86-01.RData"))
+rm(cbp8601)
 
 ##### CBP Data from 2002 to 2013
 years  <- as.character(2002:2013)
 url    <- "ftp://ftp.census.gov/econ"
-files  <- matrix(NA, nrow = length(years))
-row.names(files) <- years
-for (i in years){
-  temp <- paste0(url, i, "/CBP_CSV/cbp", substr(i, 3, 4), "co.zip")
-  file <- paste(data_source, basename(temp), sep = "/")
-  files[i,] <- file
-  if (!file.exists(file)) download.file(temp, file, method = "libcurl")
-}
+urls   <- paste0(url, years, "/CBP_CSV/cbp",
+                 substr(years, 3, 4), "co.zip")
+lapply(urls, function(x) bdown(url = x, folder = data_source))
 
-for (j in files){
-  unzip(j, exdir = tempDir)
-  file       <- list.files(tempDir, pattern = "\\.txt$", full.names = T)
-  rdata      <- read_csv(file)
-  rdata$year <- year
-  
-  data  <- bind_rows(data, rdata)
-  year  <- year + 1
-  unlink(tempDir, recursive = T)
-  
-}
-write_csv(data, path =  "0-data/CBP/CBP86-13.csv")
-save(data, file = "0-data/CBP/CBP86-13.RData")
+files   <- paste(data_source, basename(urls), sep = "/")
+year    <- 2002:2013
+cbp0213 <- mapply(function(x, y) zipdata(x, tempDir, y), x = files,
+                  y = year, SIMPLIFY = F, USE.NAMES = T)
+
+cbp0213 <- bind_rows(cbp0213)
+write_csv(cbp0213, path = paste0(localDir, "/CBP02-13.csv"))
+save(cbp0213, file = paste0(localDir, "/CBP02-13.RData"))
 
 rm(list = ls())
 
