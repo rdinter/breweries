@@ -22,20 +22,34 @@ library("cbpR")
 ## NAICS Classifications
 [NAICS Code Structure](http://www.bls.gov/bls/naics.htm) description of how the industry structure classifications. Breweries are in:
 
+<<<<<<< HEAD
 * [31-33 Manufacturing](http://www.census.gov/cgi-bin/sssd/naics/naicsrch?chart=2012) "31----"
     * [312 Beverage and Tobacco Product Manufacturing](http://www.census.gov/cgi-bin/sssd/naics/naicsrch?code=312&search=2012%20NAICS%20Search) "312///"
         * 3121 Beverage Manufacturing "3121//"
             * 31212 Breweries "31212/"
+=======
+* [31-33 Manufacturing](http://www.census.gov/cgi-bin/sssd/naics/naicsrch?chart=2012)
+    * [312 Beverage and Tobacco Product Manufacturing](http://www.census.gov/cgi-bin/sssd/naics/naicsrch?code=312&search=2012%20NAICS%20Search)
+        * 3121 Beverage Manufacturing
+            * 31212 Breweries
+>>>>>>> b075bf19c9df63311defc96f152724db6df5618d
                 * [312120 Breweries](http://www.census.gov/cgi-bin/sssd/naics/naicsrch?code=312120&search=2012%20NAICS%20Search)
 
 Description entails that breweries include: "Ale brewing; Beer brewing; Beverages, beer, ale, and malt liquors, manufacturing; Breweries; Grain, brewers' spent, manufacturing; Lager brewing; Malt liquor brewing; Near beer brewing; Nonalcoholic beer brewing; Porter brewing; and Stout brewing."
 
 Further, the bottling process is a separate NAICS classification:
 
+<<<<<<< HEAD
 * [42 Wholesale Trade](http://www.census.gov/cgi-bin/sssd/naics/naicsrch?code=424810&search=2012) "42----"
     * [424 Merchant Wholesalers, Nondurable Goods](http://www.census.gov/cgi-bin/sssd/naics/naicsrch?code=424&search=2012%20NAICS%20Search) "424///"
         * 4248 Beer, Wine, and Distilled Alcoholic Beverage Merchant Wholesalers "4248//"
             * 42481 Beer and Ale Merchant Wholesalers "42481/"
+=======
+* [42 Wholesale Trade](http://www.census.gov/cgi-bin/sssd/naics/naicsrch?code=424810&search=2012)
+    * [424 Merchant Wholesalers, Nondurable Goods](http://www.census.gov/cgi-bin/sssd/naics/naicsrch?code=424&search=2012%20NAICS%20Search)
+        * 4248 Beer, Wine, and Distilled Alcoholic Beverage Merchant Wholesalers
+            * 42481 Beer and Ale Merchant Wholesalers
+>>>>>>> b075bf19c9df63311defc96f152724db6df5618d
                 * [424810 Beer and Ale Merchant Wholesalers](http://www.census.gov/cgi-bin/sssd/naics/naicsrch?code=424810&search=2012%20NAICS%20Search)
 
 Description entails: "Alcoholic beverages (except distilled spirits, wine) merchant wholesalers; Ale merchant wholesalers; Beer merchant wholesalers; Beverages, alcoholic (except distilled spirits, wine), merchant wholesalers; Fermented malt beverages merchant wholesalers;and Porter merchant wholesalers."
@@ -43,7 +57,11 @@ Description entails: "Alcoholic beverages (except distilled spirits, wine) merch
 ## SIC Classification
 [SIC Code Structure](https://www.osha.gov/pls/imis/sic_manual.html) description on how the SIC is structure for industries. Breweries are in:
 
+<<<<<<< HEAD
 * [Division D: Manufacturing](https://www.osha.gov/pls/imis/sic_manual.display?id=4&tab=division) 19-- in 1986, but 20-- from 1987 to 1997.
+=======
+* [Division D: Manufacturing](https://www.osha.gov/pls/imis/sic_manual.display?id=4&tab=division)
+>>>>>>> b075bf19c9df63311defc96f152724db6df5618d
     * [Major Group 20](https://www.osha.gov/pls/imis/sic_manual.display?id=13&tab=group): Food And Kindred Products
         * Industry Group 208: Beverages
             * [2082 Malt Beverages](https://www.osha.gov/pls/imis/sic_manual.display?id=467&tab=description)
@@ -52,7 +70,11 @@ Description entails: "Establishments primarily engaged in manufacturing malt bev
 
 For the distribution, [Beer and Ale SIC 5181](https://www.osha.gov/pls/imis/sic_manual.display?id=7&tab=description) gives a description of distributors:
 
+<<<<<<< HEAD
 * [Division F: Wholesale Trade](https://www.osha.gov/pls/imis/sic_manual.display?id=6&tab=division) 50--
+=======
+* [Division F: Wholesale Trade](https://www.osha.gov/pls/imis/sic_manual.display?id=6&tab=division)
+>>>>>>> b075bf19c9df63311defc96f152724db6df5618d
     * [Major Group 51](https://www.osha.gov/pls/imis/sic_manual.display?id=44&tab=group): Wholesale Trade-non-durable Goods
         * Industry Group 518: Beer, Wine, And Distilled Alcoholic Beverages
             * [5181 Beer and Ale](https://www.osha.gov/pls/imis/sic_manual.display?id=7&tab=description)

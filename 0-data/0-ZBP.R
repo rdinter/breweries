@@ -30,6 +30,7 @@ years  <- c(as.character(94:99), "00", "01")
 url    <- "ftp://ftp.census.gov/Econ2001_And_Earlier/CBP_CSV/"
 
 #Download Totals
+<<<<<<< HEAD
 urls       <- paste0(url, "zbp", years, "totals.zip")
 lapply(urls, function(x) bdown(url = x, folder = data_source))
 files      <- paste(data_source, basename(urls), sep = "/")
@@ -54,10 +55,63 @@ zbpind9401 <- bind_rows(zbpind9401)
 write_csv(zbpind9401, path = paste0(localDir, "/ZBPdetail94-01.csv"))
 save(zbpind9401, file = paste0(localDir, "/ZBPdetail94-01.RData"))
 rm(zbpind9401)
+=======
+urls    <- paste0(url, "zbp", years, "totals.zip")
+lapply(urls, function(x) bdown(url = x, folder = data_source))
+files   <- paste(data_source, basename(urls), sep = "/")
+year    <- 1994:2001
+datatot <- mapply(function(x, y) zipdata(x, tempDir, y), x = files,
+                  y = year, SIMPLIFY = F, USE.NAMES = T)
+
+datatot <- bind_rows(datatot)
+write_csv(datatot, path = paste0(localDir, "/ZBPtotal94-01.csv"))
+save(datatot, file = paste0(localDir, "/ZBPtotal94-01.RData"))
+
+#Download Industries
+urls    <- paste0(url, "zbp", years, "detail.zip")
+lapply(urls, function(x) bdown(url = x, folder = data_source))
+files   <- paste(data_source, basename(urls), sep = "/")
+year    <- 1994:2001
+dataind <- mapply(function(x, y) zipdata(x, tempDir, y), x = files,
+                  y = year, SIMPLIFY = F, USE.NAMES = T)
+
+dataind <- bind_rows(dataind)
+write_csv(dataind, path = paste0(localDir, "/ZBPdetail94-01.csv"))
+save(dataind, file = paste0(localDir, "/ZBPdetail94-01.RData"))
+>>>>>>> b075bf19c9df63311defc96f152724db6df5618d
 
 ##### ZBP Data from 2002 to 2013
 years  <- as.character(2002:2013)
 url    <- "ftp://ftp.census.gov/econ"
+<<<<<<< HEAD
+=======
+
+#Download Totals
+urls    <- paste0(url, years, "/CBP_CSV/zbp", substr(years, 3, 4),
+                  "totals.zip")
+lapply(urls, function(x) bdown(url = x, folder = data_source))
+files   <- paste(data_source, basename(urls), sep = "/")
+year    <- 2002:2013
+datatot <- mapply(function(x, y) zipdata(x, tempDir, y), x = files,
+                  y = year, SIMPLIFY = F, USE.NAMES = T)
+
+datatot <- bind_rows(datatot)
+write_csv(datatot, path = paste0(localDir, "/ZBPtotal02-13.csv"))
+save(datatot, file = paste0(localDir, "/ZBPtotal02-13.RData"))
+
+#Download Industries
+urls    <- paste0(url, years, "/CBP_CSV/zbp", substr(years, 3, 4),
+                  "detail.zip")
+lapply(urls, function(x) bdown(url = x, folder = data_source))
+files   <- paste(data_source, basename(urls), sep = "/")
+year    <- 2002:2013
+dataind <- mapply(function(x, y) zipdata(x, tempDir, y), x = files,
+                  y = year, SIMPLIFY = F, USE.NAMES = T)
+
+dataind <- bind_rows(dataind)
+write_csv(dataind, path = paste0(localDir, "/ZBPdetail02-13.csv"))
+save(dataind, file = paste0(localDir, "/ZBPdetail02-13.RData"))
+>>>>>>> b075bf19c9df63311defc96f152724db6df5618d
 
 #Download Totals
 urls       <- paste0(url, years, "/CBP_CSV/zbp", substr(years, 3, 4),
