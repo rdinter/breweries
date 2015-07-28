@@ -66,6 +66,7 @@ Description entails: "Establishments primarily engaged in the wholesale distribu
 * [USGS Water Quality Data](http://water.usgs.gov/owq/data.html) for in-depth look at a key input to the beer making process.
 * [All About Beer Magazine](http://allaboutbeer.com/) various articles on the growth of breweries across the United States as well as descriptions of brewers choices of locations.
 * [Brewer's Association](https://www.brewersassociation.org/) is a trade organization that provides Insights & Analysis, State Craft Beer Stats, National Beer Stats, [Economic Impact](https://www.brewersassociation.org/attachments/0001/3790/State_by_State_Data.pdf), Brewery Production, [Number of Breweries](https://www.brewersassociation.org/statistics/number-of-breweries/), and Market Segments. Their data are proprietary, although for there are [student memberships](http://members.brewersassociation.org/store/detail.aspx?id=INTL_BA_IN) which cost $195 in order to access the data.
+* [Beer Serves America](http://www.beerservesamerica.org/) is a biennual economic impact study commissioned by the Beer Institute and National Beer Wholesalers Association. The U.S. brewing industry is a dynamic part of our national economy, contributing billions of dollars in wages and taxes. Also affiliated with [Beer Institute](http://www.beerinstitute.org/) which appears to have similar data to Brewer's Association.
 
 ## National Information
 
