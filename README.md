@@ -65,10 +65,29 @@ Description entails: "Establishments primarily engaged in the wholesale distribu
 * [University of Denver](http://libguides.du.edu/c.php?g=90474&p=581818) research guide to the U.S. beer industry.
 * [USGS Water Quality Data](http://water.usgs.gov/owq/data.html) for in-depth look at a key input to the beer making process.
 * [All About Beer Magazine](http://allaboutbeer.com/) various articles on the growth of breweries across the United States as well as descriptions of brewers choices of locations.
+* [Brewer's Association](https://www.brewersassociation.org/) is a trade organization that provides Insights & Analysis, State Craft Beer Stats, National Beer Stats, [Economic Impact](https://www.brewersassociation.org/attachments/0001/3790/State_by_State_Data.pdf), Brewery Production, [Number of Breweries](https://www.brewersassociation.org/statistics/number-of-breweries/), and Market Segments. Their data are proprietary, although for there are [student memberships](http://members.brewersassociation.org/store/detail.aspx?id=INTL_BA_IN) which cost $195 in order to access the data.
+
+## National Information
+
+[Craft Brewing Industry Still Growing](http://www.cpr.org/news/story/craft-brewing-industry-still-growing-says-boulder-based-trade-group), 27 July 2015:
+
+>The Boulder-based Brewers Association reports craft brewers sold 12.2 million barrels of beer in the first half of 2015 -- a 16 percent increase over the same period last year. The group's new numbers suggest the growth in demand for craft beers isn't slowing down. U.S. production of craft beer has more than doubled since 2011.
+>![](http://www.cpr.org/sites/default/files/styles/full-width/public/images/mid-year-craft-production-volume-production_chartbuilder.png?itok=S6ib5nwE)
+>
+>Bart Watson, chief economist for the Brewers Association, says the numbers reflect a growing demand for craft beer, but warns that growth brings competition.
+>![](http://www.cpr.org/sites/default/files/styles/full-width/public/images/mid-year-brewery-count-count_chartbuilder.png?itok=ZT4XnQH0)
+>
+>That sense of competition will likely only increase in the coming months. 699 breweries opened over the last year, according to the Brewers Association, bringing the total number to 3,739 in the U.S. There are also an additional 1,755 breweries in planning stages.
+
+[Local Hops Can't Keep Pace With Colorado Breweries](http://www.cpr.org/news/story/local-hops-can-t-keep-pace-colorado-breweries), 14 October 2014:
+
+>Some call the Front Range, with its 230 breweries, the Napa Valley of beer. Unlike Napa, however, Colorado doesn't grow most of the key ingredients, and it’s been a struggle to change that.
+>
+> ...
 
 ## North Carolina Brew
 
-[THE VEGETABLE ROOTS OF THE NORTH CAROLINA BEER BOOM](http://allaboutbeer.com/north-carolina-beer-history/)
+[THE VEGETABLE ROOTS OF THE NORTH CAROLINA BEER BOOM](http://allaboutbeer.com/north-carolina-beer-history/), 9 September 2014:
 
 >The Stroh’s brewery, which that company had acquired from a failing Jos. Schlitz in 1982, dated from late 1969. It was then the first new brewery in North Carolina since the repeal of Prohibition in 1933. It would close in August 1999
 > 
@@ -76,7 +95,7 @@ Description entails: "Establishments primarily engaged in the wholesale distribu
 > 
 >It was in 1986, in fact, that things began to really pick up beer-wise in North Carolina. On the Fourth of July that year, the Weeping Radish brewpub opened in Manteo, a town on the Outer Banks, the islands that line much of North Carolina’s coast.
 
-[STATE OF GROWTH: THE RISE OF NORTH CAROLINA BEER](http://allaboutbeer.com/state-of-growth-the-rise-of-north-carolina-beer/) - key quote:
+[STATE OF GROWTH: THE RISE OF NORTH CAROLINA BEER](http://allaboutbeer.com/state-of-growth-the-rise-of-north-carolina-beer/), 14 June 2015:
 
 >While brewery openings waned, others sought to grow North Carolina’s beer scene in another way—by raising the state’s 6% ABV cap. Sean Lilly Wilson (who would later open Durham’s Fullsteam Brewery in 2010) and a group of beer enthusiasts did just that through Pop the Cap, a grassroots movement that—through educational events, tastings and lobbying—helped **raise that cap to 15% in August of 2005.**
 
