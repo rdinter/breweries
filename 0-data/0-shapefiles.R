@@ -18,7 +18,7 @@ if (!file.exists(file)) download.file(url, file)#, method = "libcurl")
 
 unzip(file, exdir = tempDir)
 myfile  <- list.files(tempDir, full.names = T)[1]
-unlink(tempDir, recursive = T)
+#unlink(tempDir, recursive = T)
 zctap90 <- read.csv(myfile, header = F, stringsAsFactors = F)
 names(zctap90) <- c("STFIPS", "ZIP", "ST_Abbrv", "ZIP_Name", "long",
                     "lat", "pop90", "allocation")
@@ -56,7 +56,7 @@ zctap90$long <- - zctap90$long
 url <- paste0("http://www2.census.gov/geo/tiger/",
               "GENZ2014/shp/cb_2014_us_zcta510_500k.zip")
 file <- paste(localDir, basename(url), sep = "/")
-if (!file.exists(file)) download.file(url, file, method = "libcurl")
+if (!file.exists(file)) download.file(url, file)#, method = "libcurl")
 
 unzip(file, exdir = tempDir)
 myfile  <- list.files(tempDir)[1]
@@ -110,5 +110,5 @@ aea.proj  <- "+proj=longlat"
 zcta      <- spTransform(zcta,CRS(aea.proj))
 
 save(zcta,  file = paste0(localDir, "/zcta2014.RData"))
-
-load("~/Migration/0-data/ZBP/ZBP94-13_total.RData")
+# 
+# load("~/Migration/0-data/ZBP/ZBP94-13_total.RData")
