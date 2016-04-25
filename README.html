@@ -120,18 +120,8 @@ $(document).ready(function () {
 <p>The files <code>0-CBP.R</code> and <code>0-ZBP.R</code> will download all of the raw zipped files related to <a href="https://www.census.gov/econ/cbp/download/">County Business Patterns</a>. For <code>0-CBP.R</code>, the downloaded files are from 1986 to 2013 with each file between 7 and 16 MBs (total of about 165 MBs). For <code>0-ZBP.R</code>, the files cover 1994 to 2013 with a file for total establishments each year as well as a separate file for industry classifications by zip code. The total files are less than 1 MB in size (total of less than 20 MBs) while the detail files are between 12 and 17 MBs (around 310 MBs).</p>
 <div id="packages-needed" class="section level2">
 <h2>Packages Needed</h2>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD Various packages used are not found on CRAN, therefore the <a href="http://cran.r-project.org/web/packages/devtools/index.html">devtools package</a> needs to be installed. For instance, the <a href="https://github.com/eblondel/cleangeo">cleangeo</a> pacakge is needed to clean up the Zip Code shapefile for geometry inconsistencies. The following code is useful for installing packages that are not yet on CRAN: ======= Current needed packages include: <code>dplyr</code>, <code>RCurl</code>, <code>readr</code>. These are accessible through CRAN and can therefore be installed with the <code>install.packages()</code> command. <!--
-`gdata`, `ggplot2`, `maptools`, `plyr`, `raster`, `reshape2`, `rgdal`, `spdep`, `xtable`. --></p>
-<!--
-Various packages used are not found on CRAN, therefore the [devtools package](http://cran.r-project.org/web/packages/devtools/index.html) needs to be installed.
->>>>>>> 8987f5234ba320e0337b4eefa0479e88b3697f73
-
-```R
-# install.packages("devtools")
-devtools::install_github("eblondel/cleangeo")
-require(cleangeo, quietly = T)
-```
--->
+<p>Various packages used are not found on CRAN, therefore the <a href="http://cran.r-project.org/web/packages/devtools/index.html">devtools package</a> needs to be installed. For instance, the <a href="https://github.com/eblondel/cleangeo">cleangeo</a> pacakge is needed to clean up the Zip Code shapefile for geometry inconsistencies. The following code is useful for installing packages that are not yet on CRAN:</p>
+<p>Current needed packages include: <code>dplyr</code>, <code>RCurl</code>, <code>readr</code>. These are accessible through CRAN and can therefore be installed with the <code>install.packages()</code> command.</p>
 </div>
 <div id="naics-classifications" class="section level2">
 <h2>NAICS Classifications</h2>

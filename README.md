@@ -5,23 +5,9 @@ This repository is for ongoing projects involving analysis of breweries and othe
 The files `0-CBP.R` and `0-ZBP.R` will download all of the raw zipped files related to [County Business Patterns](https://www.census.gov/econ/cbp/download/). For `0-CBP.R`, the downloaded files are from 1986 to 2013 with each file between 7 and 16 MBs (total of about 165 MBs). For `0-ZBP.R`, the files cover 1994 to 2013 with a file for total establishments each year as well as a separate file for industry classifications by zip code. The total files are less than 1 MB in size (total of less than 20 MBs) while the detail files are between 12 and 17 MBs (around 310 MBs).
 
 ## Packages Needed
-<<<<<<< HEAD
 Various packages used are not found on CRAN, therefore the [devtools package](http://cran.r-project.org/web/packages/devtools/index.html) needs to be installed. For instance, the [cleangeo](https://github.com/eblondel/cleangeo) pacakge is needed to clean up the Zip Code shapefile for geometry inconsistencies. The following code is useful for installing packages that are not yet on CRAN:
-=======
+
 Current needed packages include: `dplyr`, `RCurl`, `readr`. These are accessible through CRAN and can therefore be installed with the `install.packages()` command.
-<!--
-`gdata`, `ggplot2`, `maptools`, `plyr`, `raster`, `reshape2`, `rgdal`, `spdep`, `xtable`. -->
-
-<!--
-Various packages used are not found on CRAN, therefore the [devtools package](http://cran.r-project.org/web/packages/devtools/index.html) needs to be installed.
->>>>>>> 8987f5234ba320e0337b4eefa0479e88b3697f73
-
-```R
-# install.packages("devtools")
-devtools::install_github("eblondel/cleangeo")
-require(cleangeo, quietly = T)
-```
--->
 
 ## NAICS Classifications
 [NAICS Code Structure](http://www.bls.gov/bls/naics.htm) description of how the industry structure classifications. Breweries are in:
