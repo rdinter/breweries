@@ -5,17 +5,21 @@ This repository is for ongoing projects involving analysis of breweries and othe
 The files `0-CBP.R` and `0-ZBP.R` will download all of the raw zipped files related to [County Business Patterns](https://www.census.gov/econ/cbp/download/). For `0-CBP.R`, the downloaded files are from 1986 to 2013 with each file between 7 and 16 MBs (total of about 165 MBs). For `0-ZBP.R`, the files cover 1994 to 2013 with a file for total establishments each year as well as a separate file for industry classifications by zip code. The total files are less than 1 MB in size (total of less than 20 MBs) while the detail files are between 12 and 17 MBs (around 310 MBs).
 
 ## Packages Needed
+<<<<<<< HEAD
+Various packages used are not found on CRAN, therefore the [devtools package](http://cran.r-project.org/web/packages/devtools/index.html) needs to be installed. For instance, the [cleangeo](https://github.com/eblondel/cleangeo) pacakge is needed to clean up the Zip Code shapefile for geometry inconsistencies. The following code is useful for installing packages that are not yet on CRAN:
+=======
 Current needed packages include: `dplyr`, `RCurl`, `readr`. These are accessible through CRAN and can therefore be installed with the `install.packages()` command.
 <!--
 `gdata`, `ggplot2`, `maptools`, `plyr`, `raster`, `reshape2`, `rgdal`, `spdep`, `xtable`. -->
 
 <!--
 Various packages used are not found on CRAN, therefore the [devtools package](http://cran.r-project.org/web/packages/devtools/index.html) needs to be installed.
+>>>>>>> 8987f5234ba320e0337b4eefa0479e88b3697f73
 
 ```R
 # install.packages("devtools")
-devtools::install_github("jtilly/cbpR")
-library("cbpR")
+devtools::install_github("eblondel/cleangeo")
+require(cleangeo, quietly = T)
 ```
 -->
 
@@ -100,6 +104,17 @@ Description entails: "Establishments primarily engaged in the wholesale distribu
 
 >While brewery openings waned, others sought to grow North Carolina’s beer scene in another way—by raising the state’s 6% ABV cap. Sean Lilly Wilson (who would later open Durham’s Fullsteam Brewery in 2010) and a group of beer enthusiasts did just that through Pop the Cap, a grassroots movement that—through educational events, tastings and lobbying—helped **raise that cap to 15% in August of 2005.**
 
+[DISTRIBUTION LAW CAPS NC BREWEERS ABILITY TO GROW](http://www.wral.com/distribution-law-caps-nc-brewers-ability-to-grow/15655744/), 23 April 2016:
+
+>But the state encourages the growth of North Carolina breweries only to a certain point. Brewers can obtain a malt beverage wholesaler permit to sell, deliver and ship at wholesale their own products, but only until the brewery reaches a 25,000 barrel cap of annual production.
+> 
+> ...
+> 
+>“Just to put it in perspective, if you were brewing 25,000 barrels and all of a sudden you had to turn over your full allotment to wholesalers, in order to make the same amount of money, you'd have to sell 40,000 barrels immediately.”
+> 
+> ...
+> 
+>It’s a double whammy for craft brewers at 25,000 barrels of production — not only must brewers sign with a wholesaler and lose 30 percent of revenue, but franchise law kicks in as well.
 
 <!--
 THE FOLLOWING HAS BEEN COMMENTED OUT BUT IS EXTREMELY HELPFUL FOR REMEMBERING MARKDOWN COMMANDS
