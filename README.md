@@ -70,6 +70,10 @@ Description entails: "Establishments primarily engaged in the wholesale distribu
 >
 >That sense of competition will likely only increase in the coming months. 699 breweries opened over the last year, according to the Brewers Association, bringing the total number to 3,739 in the U.S. There are also an additional 1,755 breweries in planning stages.
 
+[The United States of Beer](http://priceonomics.com/the-united-states-of-beer/), 10 July 2015. Various insights from [BeerMenus](https://www.beermenus.com/) data:
+
+>We analyzed the beer listings of 6,000 bars and restaurants across all 50 states to find out exactly which beers predominate menus in which states. Although the macro brews Bud Light, Miller Lite and Coors Light still rule much of the country, according to our dataset, there are many states and cities where the most available beer is one of the plucky underdogs.
+
 [Local Hops Can't Keep Pace With Colorado Breweries](http://www.cpr.org/news/story/local-hops-can-t-keep-pace-colorado-breweries), 14 October 2014:
 
 >Some call the Front Range, with its 230 breweries, the Napa Valley of beer. Unlike Napa, however, Colorado doesn't grow most of the key ingredients, and it’s been a struggle to change that.
@@ -101,6 +105,10 @@ Description entails: "Establishments primarily engaged in the wholesale distribu
 > ...
 > 
 >It’s a double whammy for craft brewers at 25,000 barrels of production — not only must brewers sign with a wholesaler and lose 30 percent of revenue, but franchise law kicks in as well.
+
+## Various
+Not sure what to call this, but interesting tidbits from [The Beer Boom: Here, There or Everywhere?](http://datatante.com/?p=259)
+
 
 <!--
 THE FOLLOWING HAS BEEN COMMENTED OUT BUT IS EXTREMELY HELPFUL FOR REMEMBERING MARKDOWN COMMANDS
