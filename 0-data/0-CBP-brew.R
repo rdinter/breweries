@@ -9,14 +9,12 @@
 
 print(paste0("Started 0-CBP-brew at ", Sys.time()))
 
-options(scipen=999) #Turn off scientific notation for write.csv()
-require(dplyr, quietly = T)
-# require(stringr, quietly = T)
+library(tidyverse)
 
-load("0-data/CBP/CBP86-01.RData") # 1986 to 2001 data
+cbp <- read_rds("0-data/CBP/CBP86-14.rds")
 
 # Problems in 1986: Manufacturing was titled 19-- ...
-cbp8601 <- mutate(cbp8601, sic = replace(sic, sic == "19--", "20--"))
+cbp <- mutate(cbp, sic = replace(sic, sic == "19--", "20--"))
 
 # data$sic <- str_replace(data$sic, "[[:punct:]]", "0")
 
@@ -24,15 +22,8 @@ bsic   <- c("----", "20--", "2000", "2080", "2082",
             "50--", "5100", "5180", "5181")
 bnaics <- c("------", "31----", "312///", "3121//", "31212/", "312120",
             "42----", "424///", "4248//", "42481/", "424810")
-beer   <- filter(cbp8601, sic %in% bsic | naics %in% bnaics)
-rm(cbp8601)
-
-load("0-data/CBP/CBP02-13.RData")
-
-beer2 <- filter(cbp0213, naics %in% bnaics)
-rm(cbp0213)
-
-beer  <- bind_rows(beer, beer2)
+beer   <- filter(cbp, sic %in% bsic | naics %in% bnaics)
+rm(cbp)
 
 # EMPFLAG: This denotes employment size class for data withheld to
 # avoid disclosure (confidentiality) or withheld because data do
@@ -66,5 +57,8 @@ beer <- beer %>%
 
 beersic   <- filter(beer, !is.na(sic))
 beernaics <- filter(beer, !is.na(naics))
+
+write_csv(beer, "0-data/CBP/beer.csv")
+write_rds(beer, "0-data/CBP/beer.rds")
 
 print(paste0("Finished 0-CBP-brew at ", Sys.time()))
