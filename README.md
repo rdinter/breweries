@@ -109,55 +109,8 @@ Description entails: "Establishments primarily engaged in the wholesale distribu
 ## Various
 Not sure what to call this, but interesting tidbits from [The Beer Boom: Here, There or Everywhere?](http://datatante.com/?p=259)
 
+[A citylab article on Missoula Montana's brewery scene](https://www.citylab.com/life/2017/08/missoula-taps-the-power-of-beer/535800/)
 
-<!--
-THE FOLLOWING HAS BEEN COMMENTED OUT BUT IS EXTREMELY HELPFUL FOR REMEMBERING MARKDOWN COMMANDS
+Craft brewing in Montana, infosheet from [Bureau of Business and Economic Research at the University of Montana](http://montanabrewers.org/wp-content/uploads/2016/12/Brewers-Infographic-2016.jpg)
 
-# Cheat Sheet
-Plain text
-End a line with two spaces to start a new paragraph.  
-*italics* and _italics_  
-**bold** and __bold__  
-superscript^2^  
-~~strikethrough~~  
-[link](www.rstudio.com)  
-
-# Header 1  
-## Header 2  
-### Header 3  
-#### Header 4  
-##### Header 5  
-###### Header 6  
-
-endash: --  
-emdash: ---  
-ellipsis: ...  
-inline equation: $A = \pi*r^{2}$  
-image: ![](RStudioSmall.png)  
-horizontal rule (or slide break):
-
-***
-
-> block quote
-
-* unordered list
-* item 2
-  + sub-item 1
-  + sub-item 2
-
-1. ordered list
-2. item 2
-  + sub-item 1
-  + sub-item 2
-
-Table Header  | Second Header
-------------- |-------------
-Table Cell    | Cell 2
-Cell 3        | Cell 4
-
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
--->
+Beer and cities: A toast to 2017 from [City Commentary](http://cityobservatory.org/beer-and-cities-a-toast-to-2017/)

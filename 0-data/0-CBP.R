@@ -1,4 +1,4 @@
-#Robert Dinterman
+# Robert Dinterman
 
 # County Business Patterns
 # https://www.census.gov/econ/cbp/download/
@@ -24,53 +24,70 @@ urls <- paste0("https://www.census.gov/econ/cbp/download/full_layout/",
 map(urls,
     function(x) download.file(x, paste(data_source, basename(x), sep = "/")))
 
-urls <- paste0("https://www.census.gov/econ/cbp/download/",
-               c("sic86.txt", "sic87.txt", "sic88_97.txt", "naics.txt"))
-map(urls,
+naics_urls <- paste0("https://www2.census.gov/programs-surveys/cbp/",
+                     "technical-documentation/reference/naics-descriptions/",
+                     c("naics2012.txt", "naics2007.txt",
+                       "naics2002.txt", "naics.txt"))
+map(naics_urls,
     function(x) download.file(x, paste(data_source, basename(x), sep = "/")))
 
-# ---- CBP Data from 1986 to 2001 -----------------------------------------
-years  <- as.character(1986:2014)
+sic_urls <- paste0("http://www2.census.gov/programs-surveys/cbp/",
+                   "technical-documentation/records-layouts/",
+                   "sic-code-descriptions/",
+                   c("sic86.txt", "sic87.txt", "sic88_97.txt"))
+map(sic_urls,
+    function(x) download.file(x, paste(data_source, basename(x), sep = "/")))
+
+# ---- CBP Data from 1986 to 2015 -----------------------------------------
+
+years  <- as.character(1986:2015)
 urls   <- paste0("http://www2.census.gov/programs-surveys/cbp/datasets/",
                  years, "/cbp", substr(years, 3, 4), "co.zip")
 files  <- paste(data_source, basename(urls), sep = "/")
 
-map2(urls, files, function(urls, files)
-  if(!file.exists(files)) download.file(urls, files))
+map2(urls, files, function(urls, files) {
+  if (!file.exists(files)) {
+    Sys.sleep(runif(1, 2, 3))
+    download.file(urls, files)
+    }
+  })
 
-# function
-zipdata <- function(files, tempDir, years){
-  unlink(tempDir, recursive = T)
+# Do not grab the "calls", which I still need to parse through from the Chicago
+#  Fed. Correction is to only grab the .zip files instead of the folder.
+cbp_files <- dir(data_source, full.names = T, pattern = ".zip")
+
+chars <- c("fipstate", "fipscty", "sic", "naics",
+           "empflag", "emp_nf", "qp1_nf", "ap_nf")
+
+cbp <- map(cbp_files, function(x) {
+  j5 <- read_csv(x, col_types = cols(.default = "d", sic = "c", SIC = "c",
+                                       naics = "c", NAICS = "c", empflag = "c",
+                                       EMPFLAG = "c",  emp_nf = "c",
+                                       EMP_NF = "c", qp1_nf = "c",
+                                       QP1_NF = "c", ap_nf = "c", AP_NF = "c"))
+  names(j5) <- tolower(names(j5))
   
-  unzip(files, exdir = tempDir)
-  files <- list.files(tempDir, pattern = "\\.txt$", full.names = T)
-  rdata <- read_csv(files,
-                    col_types = cols(.default = "i", fipstate = "c", 
-                                     fipscty = "c", sic = "c", naics = "c",
-                                     empflag = "c", emp_nf = "c", qp1_nf = "c",
-                                     ap_nf = "c"))
+  # j5_numeric <- names(j5)[!(names(j5) %in% chars)]
+  # 
+  # j5 <- mutate_at(j5, j5_numeric, parse_number)
   
-  names(rdata) <- tolower(names(rdata))
-  rdata$YEAR  <- as.numeric(years)
+  j5_year <- if_else(parse_number(basename(x)) < 86,
+                       2000 + parse_number(basename(x)),
+                       1900 + parse_number(basename(x)))
+  j5$year <- j5_year
   
-  return(rdata)
-}
-cbp_data <- pmap(list(files, tempDir, years), zipdata)
+  return(j5)
+  })
 
-cbp      <- bind_rows(cbp_data)
+cbp <- bind_rows(cbp)
 
-#####
-#### NEED TO GO THROUGH AND CHANGE THIS BECAUSE OF DUPLICATES
-#####
-cbp %>%
-  filter(fipstate == "11") %>%
-  mutate(fipscty = "001") %>%
-  bind_rows(cbp) -> cbp
-
-cbp %>% mutate(fipscty = ifelse(fipscty == "999", "0", fipscty),
-               fips = 1000*as.numeric(fipstate) + as.numeric(fipscty),
-               fips = ifelse(fips == 12025, 12086, fips)) %>%
-  select(YEAR, fips, naics, sic:n1000_4) -> cbp
+cbp <- cbp %>%
+  mutate(fipscty = if_else(fipscty == 999, 0, fipscty),
+         fipscty = if_else(fipscty == 0 & fipstate == 11, 1, fipscty),
+         fips = 1000*fipstate + fipscty,
+         fips = if_else(fips == 12025, 12086, fips)) %>% 
+  select(year, fips, fipstate, fipscty, censtate, cencty, naics, sic,
+         empflag, emp_nf, qp1_nf, ap_nf, emp:n1000_4)
 
 # So we can replace the FIPS, then group_by FIPS ....
 cbp$fips[cbp$fips == 51780] = 51083
@@ -79,18 +96,20 @@ cbp$fips[cbp$fips == 51515] = 51019
 
 probs <- c(51083, 51005, 51019)
 
-# empflag needs to be rethought
+# empflag needs to be rethought, but OK for now
 
-cbp %>% filter(fips %in% probs) %>% 
-  group_by(YEAR, fips, naics, sic) %>% 
-  summarise_each(funs(sum(., na.rm = T)), -empflag) -> cb3
+cb3 <- cbp %>% 
+  select(-fipstate, -fipscty, -censtate, -cencty) %>% 
+  filter(fips %in% probs) %>% 
+  group_by(year, fips, naics, sic) %>% 
+  summarise_at(vars(emp:n1000_4), funs(sum(., na.rm = T)))
 
-# THIS STILL NEEDS WORK ^^^^
-# cbp <- bind_rows(filter(cbp, !(fips %in% probs)), cb3)
+# Add in the grouped problem counties
+cbp <- cbp %>% 
+  filter(!(fips %in% probs)) %>% 
+  bind_rows(cb3)
 
-write_rds(cbp, paste0(local_dir, "/CBP86-14.rds"))
-# write_csv(cbp, path = paste0(local_dir, "/CBP86-14.csv"))
-
-rm(list = ls())
+write_rds(cbp, paste0(local_dir, "/CBP86-15.rds"))
+write_csv(cbp, path = paste0(local_dir, "/CBP86-15.csv"))
 
 print(paste0("Finished 0-CBP at ", Sys.time()))
